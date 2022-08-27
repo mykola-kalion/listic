@@ -27,6 +27,11 @@ namespace Listonic.Domain.Services
             return await _listRepository.GetAllAsync();
         }
 
+        public async Task<ListModel> GetByIdAsync(int listId)
+        {
+            return await _listRepository.GetByIdAsync(listId);
+        }
+
         public async Task<StandardResponse<ListModel>> SaveAsync(ListModel listModel, string userId)
         {
             try

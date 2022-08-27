@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Listonic.Domain.Models;
 using Listonic.Domain.Services.Abstractions;
+using Listonic.Extensions;
 using Listonic.Resources;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -17,18 +18,14 @@ namespace Listonic.Controllers
     public class ListController : Controller
     {
         private readonly IListService _listService;
-        private readonly IItemService _itemService;
         private readonly IListItemService _listItemService;
-        private readonly UserManager<IdentityUser> _userManager;
         private readonly IMapper _mapper;
 
         public ListController(IListService listService, IItemService itemService, IMapper mapper,
             IListItemService listItemService, UserManager<IdentityUser> userManager)
         {
             _listService = listService;
-            _itemService = itemService;
             _listItemService = listItemService;
-            _userManager = userManager;
             _mapper = mapper;
         }
 
@@ -39,8 +36,25 @@ namespace Listonic.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var result = await _listService.ListAsync();
             return _mapper.Map<IEnumerable<ListModel>, IEnumerable<ListResource>>(
-                result.Where(q => q.Owners.Select(x => x.OwnerId).Contains(userId))
+                result.Where(q => q.IsOwner(userId))
             );
+        }
+        
+        [HttpGet("{listId}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetByIdAsync(int listId)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var list = await _listService.GetByIdAsync(listId);
+
+            if (!list.IsOwner(userId))
+            {
+                return NotFound();
+            }
+            
+            var result = _mapper.Map<ListModel, ListResource>(list);
+            
+            return Ok(result);
         }
         
         [HttpPost]
@@ -54,7 +68,7 @@ namespace Listonic.Controllers
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var list = _mapper.Map<CreateListResource, ListModel>(resource);
-            ;
+            
             var result = await _listService.SaveAsync(list, userId);
 
             if (!result.Success)

@@ -1,10 +1,8 @@
 using System.Text;
 using Listonic.Persistence.Contexts;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using Users.Persistence.Contexts;
 
 namespace Users.Extensions;
 
@@ -35,7 +33,7 @@ public static class ServiceCollectionExtensions
             {
                 options.SaveToken = true;
                 options.RequireHttpsMetadata = false;
-                options.TokenValidationParameters = new TokenValidationParameters()
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,

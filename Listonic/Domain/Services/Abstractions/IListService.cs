@@ -10,5 +10,6 @@ namespace Listonic.Domain.Services.Abstractions
         Task<IEnumerable<ListModel>> ListAsync();
         Task<StandardResponse<ListModel>> SaveAsync(ListModel listModel, string userId);
         Task<StandardResponse<ListModel>> UpdateAsync(int listId, ListModel listModel);
+        Task<ListModel> GetByIdAsync(int listId);
     }
 }

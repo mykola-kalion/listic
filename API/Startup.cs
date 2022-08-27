@@ -1,10 +1,7 @@
 using Listonic.Extensions;
 using Listonic.Persistence.Contexts;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Users.Extensions;
-using Users.Persistence.Contexts;
 
 namespace API
 {
@@ -22,7 +19,11 @@ namespace API
         {
             services.AddControllers();
 
-            services.AddDbContext<ListonicDbContext>(options => { options.UseSqlite("Data Source=listonic_db.sqlite"); });
+            services.AddDbContext<ListonicDbContext>(options =>
+            {
+                options.UseNpgsql(Configuration.GetConnectionString("Default"));
+                options.UseNpgsql(b => b.MigrationsAssembly("API"));
+            });
 
             services.AddListonicServices();
             services.UserServices(Configuration);
@@ -31,12 +32,14 @@ namespace API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ListonicDbContext dbContext)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            dbContext.Database.Migrate();
 
             // app.UseHttpsRedirection();
 

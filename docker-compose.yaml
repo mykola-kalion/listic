@@ -1,0 +1,17 @@
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: 'user'
+      POSTGRES_PASSWORD: 'Pa33word'
+    ports:
+      - '5432:5432'
+  listic:
+    container_name: listic
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - '80:80'

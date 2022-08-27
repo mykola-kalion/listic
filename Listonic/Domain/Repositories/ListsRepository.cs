@@ -10,10 +10,8 @@ namespace Listonic.Domain.Repositories
 {
     public class ListsRepository : Repository<ListModel>, IListRepository
     {
-        private readonly ListonicDbContext _rawContext;
         public ListsRepository(ListonicDbContext context) : base(context.Lists)
         {
-            _rawContext = context;
         }
 
         public new async Task<IEnumerable<ListModel>> GetAllAsync()
@@ -24,6 +22,15 @@ namespace Listonic.Domain.Repositories
                 .Include(x => x.Owners)
                 .ThenInclude(x => x.Owner)
                 .ToListAsync();
+        }
+
+        public new async Task<ListModel> GetByIdAsync(int id)
+        {
+            return await _context.Include(l => l.Items)
+                .ThenInclude(i => i.Item)
+                .Include(x => x.Owners)
+                .ThenInclude(x => x.Owner)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }
