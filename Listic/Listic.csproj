@@ -4,6 +4,7 @@
         <TargetFramework>netcoreapp6.0</TargetFramework>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <OutputType>Library</OutputType>
+        <RootNamespace>Listonic</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

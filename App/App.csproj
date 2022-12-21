@@ -12,7 +12,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <ProjectReference Include="..\Listonic\Listonic.csproj" />
+        <ProjectReference Include="..\Listic\Listic.csproj" />
         <ProjectReference Include="..\Users\Users.csproj" />
     </ItemGroup>
 
