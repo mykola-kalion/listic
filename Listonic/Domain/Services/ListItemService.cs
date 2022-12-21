@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
+using Common.Communication;
 using Listonic.Domain.Models;
 using Listonic.Domain.Repositories.Abstractions;
 using Listonic.Domain.Services.Abstractions;
-using Listonic.Domain.Services.Communication;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Listonic.Domain.Services
@@ -34,7 +34,7 @@ namespace Listonic.Domain.Services
             {
                 try
                 {
-                    EntityEntry<ListItem> listItem = await _listItemRepository.CreateAsync(new ListItem
+                    var listItem = await _listItemRepository.CreateAsync(new ListItem
                         { ListId = item.ListId, ItemId = existingItem.Obj.Id, Quantity = item.Quantity });
                     await _unitOfWork.CompleteAsync();
 

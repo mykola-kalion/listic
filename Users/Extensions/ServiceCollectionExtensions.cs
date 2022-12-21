@@ -1,4 +1,5 @@
 using System.Text;
+using Common.Models;
 using Listonic.Persistence.Contexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +11,8 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection UserServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddIdentity<IdentityUser, IdentityRole>()
+        services.AddIdentity<TelegramUser, IdentityRole>()
+            .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ListonicDbContext>()
             .AddDefaultTokenProviders();
 

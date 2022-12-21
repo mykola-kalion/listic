@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
+using Common.Communication;
 using Listonic.Domain.Models;
-using Listonic.Domain.Services.Communication;
 
 namespace Listonic.Domain.Services.Abstractions;
 

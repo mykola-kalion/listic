@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listonic", "Listonic\Listonic.csproj", "{DFD7BF96-5088-4693-87C0-5A7A9A3EE862}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{3371E78B-102C-49AA-B8D5-1CE3CFCC0634}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{3371E78B-102C-49AA-B8D5-1CE3CFCC0634}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users", "Users\Users.csproj", "{C0AF3C50-FC95-4720-AA37-0DD9FD636D4D}"
 EndProject

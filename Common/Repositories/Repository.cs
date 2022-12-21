@@ -34,7 +34,7 @@ namespace Common.Repositories
 
         public void Delete(T obj)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

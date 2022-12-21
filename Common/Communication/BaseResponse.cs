@@ -1,4 +1,4 @@
-namespace Listonic.Domain.Services.Communication
+namespace Common.Communication
 {
     public abstract class BaseResponse
     {

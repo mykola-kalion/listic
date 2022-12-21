@@ -1,3 +1,4 @@
+using Common.Models;
 using Listonic.Domain.Models;
 using Listonic.Extensions;
 using Microsoft.AspNetCore.Identity;
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Listonic.Persistence.Contexts
 {
-    public class ListonicDbContext : IdentityDbContext<IdentityUser>
+    public class ListonicDbContext : IdentityDbContext<TelegramUser>
     {
         public DbSet<ListModel> Lists { get; set; }
         public DbSet<Item> Items { get; set; }

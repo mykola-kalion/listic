@@ -1,4 +1,4 @@
-namespace Listonic.Domain.Services.Communication;
+namespace Common.Communication;
 
 public class StandardResponse<T> : BaseResponse where T: class
 {

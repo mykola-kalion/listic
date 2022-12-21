@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
+using Common.Communication;
 using Listonic.Domain.Models;
 using Listonic.Domain.Repositories.Abstractions;
 using Listonic.Domain.Services.Abstractions;
-using Listonic.Domain.Services.Communication;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Listonic.Domain.Services;

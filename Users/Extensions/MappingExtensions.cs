@@ -1,4 +1,5 @@
 using AutoMapper;
+using Common.Models;
 using Microsoft.AspNetCore.Identity;
 using Users.Resources;
 
@@ -8,7 +9,7 @@ public static class MappingExtensions
 {
     public static Profile AccountMappings(this Profile profile)
     {
-        profile.CreateMap<UserCredentialsResource, IdentityUser>();
+        profile.CreateMap<UserCredentialsResource, TelegramUser>();
 
         return profile;
     }

@@ -1,8 +1,7 @@
-namespace Listonic.Resources
+namespace Listonic.Resources;
+
+public class ItemResource
 {
-    public class ItemResource
-    {
-        public string Name { get; set; }
-        public int Quantity { get; set; }
-    }
+    public string Name { get; set; }
+    public int Quantity { get; set; }
 }

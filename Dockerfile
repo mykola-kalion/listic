@@ -9,7 +9,7 @@ WORKDIR /src
 COPY / /src
 RUN dotnet build Listic.sln -c Release
 
-RUN dotnet publish /src/API/API.csproj -c Release -o out
+RUN dotnet publish /src/App/App.csproj -c Release -o out
 
 FROM base
 WORKDIR /app
@@ -17,4 +17,4 @@ COPY --from=build /src/out .
 
 RUN apk add icu-libs
 
-ENTRYPOINT dotnet API.dll
+ENTRYPOINT dotnet App.dll
