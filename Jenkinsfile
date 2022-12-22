@@ -11,7 +11,7 @@ pipeline {
       steps {
         withDotNet(sdk: 'dotnet 6') {
         sh 'ls -la'
-        sh 'dotnet --help'
+//         sh 'dotnet --help'
 //           sh 'build Listic.sln -c Release'
         }
         sh 'dotnet --help'
