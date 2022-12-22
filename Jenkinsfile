@@ -7,20 +7,21 @@ pipeline {
       }
     }
 
-    stage('DotNet build') {
-      steps {
-        withDotNet(sdk: 'dotnet 6') {
-          sh 'ls -la'
+        stage('Restore packages'){
+            steps{
+                sh 'dotnet restore Listic.sln'
+            }
         }
-
-      }
-    }
-
-    stage('Another build') {
-      steps {
-        dotnetBuild(sdk: 'dotnet 6', configuration: 'Release', continueOnError: true, charset: 'Listic.sln')
-      }
-    }
+        stage('Clean'){
+            steps{
+                sh 'dotnet clean Listic.sln --configuration Release'
+            }
+        }
+        stage('Build'){
+            steps{
+                sh 'dotnet build Listic.sln --configuration Release --no-restore'
+            }
+        }
 
   }
 }
