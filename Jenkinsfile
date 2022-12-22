@@ -3,7 +3,10 @@ pipeline {
   stages {
     stage('DotNet build') {
       steps {
-        dotnetBuild(targets: 'Listic.sln')
+        withDotNet() {
+          sh 'dotnet build Listic.sln -c Release'
+        }
+
       }
     }
 
