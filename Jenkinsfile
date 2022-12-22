@@ -14,7 +14,9 @@ node {
             }
 
             stage ("dotnet build") {
-		dotnetBuild();
+		dotnetBuild() {
+		project("Listic")
+		};
             }
 
 //             stage ("dotnet test") {
@@ -44,11 +46,11 @@ node {
 //     }
 }
 
-def dotnet_build(){
-    dir('Listic') {
-	sh(script: 'dotnet build Listic.sln -c Release', returnStdout: true);
-    }
-}
+// def dotnet_build(){
+//     dir('Listic') {
+// 	sh(script: 'dotnet build Listic.sln -c Release', returnStdout: true);
+//     }
+// }
 
 def cloneRepo() {
     checkout scm;
