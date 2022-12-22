@@ -49,3 +49,7 @@ def dotnet_build(){
 	sh(script: 'dotnet build Listic.sln -c Release', returnStdout: true);
     }
 }
+
+def cloneRepo() {
+    checkout scm;
+}
