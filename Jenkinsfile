@@ -45,9 +45,9 @@ node {
 }
 
 def dotnet_build(){
-    dir('Merken.NetCoreBuild.App') {
+//     dir('Merken.NetCoreBuild.App') {
 	sh(script: 'dotnet build Listic.sln -c Release', returnStdout: true);
-    }
+//     }
 }
 
 def cloneRepo() {
