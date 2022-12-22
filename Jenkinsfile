@@ -10,12 +10,15 @@ pipeline {
     stage('DotNet build') {
       steps {
         withDotNet(sdk: 'dotnet 6') {
-        sh 'ls -la'
-//         sh 'dotnet --help'
-//           sh 'build Listic.sln -c Release'
+          sh 'ls -la'
         }
-        sh 'dotnet --help'
 
+      }
+    }
+
+    stage('Another build') {
+      steps {
+        dotnetBuild(showSdkInfo: true, sdk: 'dotnet 6', configuration: 'Release', continueOnError: true)
       }
     }
 
