@@ -10,9 +10,8 @@ pipeline {
     stage('DotNet build') {
       steps {
         withDotNet(sdk: 'dotnet 6') {
-          sh 'dotnet build Listic.sln -c Release --sdk-version 6.0.404'
+          sh 'dotnet build Listic.sln -c Release'
         }
-
       }
     }
 
