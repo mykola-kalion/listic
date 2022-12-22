@@ -12,9 +12,7 @@ node {
         }
 
         stage("dotnet build") {
-            project("Listic") {
-                dotnetBuild()
-            }
+	sh(script: 'dotnet build dotnet build Listic.sln', returnStdout: true);
         }
 
     }
