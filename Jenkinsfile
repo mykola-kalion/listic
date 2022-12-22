@@ -47,7 +47,7 @@ node {
 def dotnet_build(){
     dir('Listic') {
 	sh(script: 'dotnet build Listic.sln -c Release', returnStdout: true);
-//     }
+    }
 }
 
 def cloneRepo() {
