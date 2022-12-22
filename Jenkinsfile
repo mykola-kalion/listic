@@ -7,7 +7,7 @@ pipeline {
       }
     }
 
-        stage('Build'){
+        stage('Restore packages'){
             steps{
                 sh 'dotnet restore Listic.sln'
             }
