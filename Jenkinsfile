@@ -10,5 +10,11 @@ pipeline {
       }
     }
 
+    stage('Checkout') {
+      steps {
+        git(url: 'https://github.com/nkalion/listic', branch: 'master')
+      }
+    }
+
   }
 }
