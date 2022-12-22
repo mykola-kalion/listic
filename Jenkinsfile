@@ -14,7 +14,7 @@ node {
             }
 
             stage ("dotnet build") {
-		dotnet_build();
+		dotnetBuild();
             }
 
 //             stage ("dotnet test") {
