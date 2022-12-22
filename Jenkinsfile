@@ -18,7 +18,7 @@ pipeline {
 
     stage('Another build') {
       steps {
-        dotnetBuild(sdk: 'dotnet 6', configuration: 'Release', continueOnError: true)
+        dotnetBuild(sdk: 'dotnet 6', configuration: 'Release', continueOnError: true, charset: 'Listic.sln')
       }
     }
 
