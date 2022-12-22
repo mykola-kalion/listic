@@ -9,7 +9,7 @@ pipeline {
 
         stage('Restore packages'){
             steps{
-                sh 'dotnet restore Listic.sln'
+                sh 'dotnet restore Listic.sln -v diag'
             }
         }
         stage('Clean'){
