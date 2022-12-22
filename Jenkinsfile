@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('DotNet build') {
       steps {
-        dotnetBuild()
+        dotnetBuild(targets: 'Listic.sln')
       }
     }
 
