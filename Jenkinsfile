@@ -12,6 +12,7 @@ pipeline {
         withDotNet(sdk: 'dotnet 6') {
           sh 'dotnet build Listic.sln -c Release'
         }
+
       }
     }
 
