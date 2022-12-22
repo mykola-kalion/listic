@@ -1,6 +1,12 @@
 pipeline {
   agent any
   stages {
+      stage('Checkout') {
+        steps {
+          git(url: 'https://github.com/nkalion/listic', branch: 'master')
+        }
+      }
+      
     stage('DotNet build') {
       steps {
         withDotNet() {
@@ -9,12 +15,5 @@ pipeline {
 
       }
     }
-
-    stage('Checkout') {
-      steps {
-        git(url: 'https://github.com/nkalion/listic', branch: 'master')
-      }
-    }
-
   }
 }
