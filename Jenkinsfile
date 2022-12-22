@@ -4,7 +4,7 @@ VERSION_NUMBER = ""
 
 /** Pipeline **/
 node {
-    ws('netcore') {
+//     ws('netcore') {
         try{
             stage("scm pull") {
 		deleteDir();
@@ -41,7 +41,7 @@ node {
             currentBuild.result = 'FAILURE';
             throw e;
         }
-    }
+//     }
 }
 
 def dotnet_build(){
