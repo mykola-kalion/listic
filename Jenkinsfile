@@ -14,6 +14,7 @@ pipeline {
         sh 'dotnet --help'
 //           sh 'build Listic.sln -c Release'
         }
+        sh 'dotnet --help'
 
       }
     }
