@@ -1,5 +1,11 @@
 pipeline {
     agent { docker { image 'mcr.microsoft.com/dotnet/sdk:6.0' } }
+    
+        environment {
+            DISABLE_AUTH = 'true'
+            DOTNET_CLI_HOME = "/tmp/DOTNET_CLI_HOME"
+        }
+    
     stages {
         stage('Checkout') {
             steps {
